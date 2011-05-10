@@ -1,6 +1,10 @@
-http = require 'http'
+require 'ejs'
+app = require('express').createServer()
 
-http.createServer( (req, res) ->
-  res.writeHead 200, {'Content-Type': 'text/plain; charset=utf-8'}
-  res.end 'みてるー?\n'
-).listen(8124, "127.0.0.1")
+app.set 'view options', { layout: true }
+app.set 'view engine', 'ejs'
+
+app.get '/', (req, res) ->
+  res.render 'index'
+
+app.listen 8124
